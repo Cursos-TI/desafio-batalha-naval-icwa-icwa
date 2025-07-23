@@ -62,7 +62,64 @@ int main(){
             tabuleiro[i][j] = 0;
         }
     }
-
+// inclusão de dois navios na diagonal para o nível aventureiro
+    // Navio_3 com 3 células numa diagonal qualquer atribuídas com o 3.
+    for(int i = 3; i < 6; i++){
+        for( int j = 4; j < 7; j++){
+            if(j-i == 1)
+            tabuleiro[i][j] = 3;
+        }
+    }
+     // Navio_4 com 3 células na diagonal secundária atribuídas com o 3.
+    for(int i = 0; i < 10; i++){
+        for( int j = 0; j < 3; j++){
+            if(i+j == 9)
+            tabuleiro[i][j] = 3;
+        }
+    }
+     printf("\n");
+    // atualiza o tabuleiro 
+    printf("    *** Nível Aventureiro***\n");
+    printf("       Tabuleiro com Navios\n");
+    printf("   "); // espaço para iniciar o cabeçalho das colunas
+    for(int i = 0; i < 10; i++){
+        printf("%-3c",coluna[i]);
+    }
+    printf("\n");
+    for(int i = 0; i < 10; i++){
+        printf("%-3s", linha[i]);
+        for(int j = 0; j < 10; j++){
+            printf("%-3d", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    printf("Verifica sobreposição nível Aventureiro...\n");
+    
+     // Verifica se os navios se sobrepõem de forma simplificada.
+     // Se contaNavios for múltiplo de 3 não há sobreposição, caso contrário, há sobreposição.
+     // A lógica é baseada na premissa de que cada navio ocupa apenas e tão somente 3 células em sequência.
+    int contaNavios = 0;
+    for(int i = 0; i < 10; i++){
+        for (int j = 0; j < 10; j++){
+            if(tabuleiro[i][j] == 3){
+                contaNavios++;
+            }    
+        }
+    }
+    int navios = contaNavios / 3;
+    printf("Número de navios: %d\n",navios);
+    if(contaNavios % 3 == 0){
+        printf("Os navios não se sobrepõem.\n");
+    } else {
+        printf("Os navios se sobrepõem.\n");
+    }
+    // limpa o tabuleiro antes das figuras geométricas
+    for (int i = 0; i < 10; i++){
+        for(int j = 0; j < 10; j++){
+            tabuleiro[i][j] = 0;
+        }
+    }
 
 
 
